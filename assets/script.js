@@ -28,16 +28,35 @@
 //                 <div class="cards--back"></div>
 //             </div>
 
-const getOneCard = (icon) => {
-    const div = document.createElement('div');
-    div.classList.add('cards-container');
-    div.innerHTML = `<div class="cards-container">
-    <div class="cards">
-        <div class="cards--front">teszt ${icon}</div>
-        <div class="cards--back"></div>
-    </div>`;
-    return div;
-};
+//Timer
+let timerIsRunning = true;
+let currentTime = 0;
+setInterval( () => {
+    currentTime++;
+    showCurrentTime();
+}, 1000);
+
+// Show Current time
+function showCurrentTime() {
+    let minutes = Math.floor(currentTime / 60);
+    let seconds = currentTime % 60;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+    document.querySelector('.current-time').textContent =
+        `${minutes}:${seconds}`;
+
+}
+
+// const getOneCard = (icon) => {
+//     const div = document.createElement('div');
+//     div.classList.add('cards-container');
+//     div.innerHTML = `<div class="cards-container">
+//     <div class="cards">
+//         <div class="cards--front">teszt ${icon}</div>
+//         <div class="cards--back"></div>
+//     </div>`;
+//     return div;
+// };
 //Shuffle an array  (source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 
 const shuffle = (array) => {
@@ -66,17 +85,17 @@ const shuffle = (array) => {
     'négy',
     'öt',
 ];
- const iconArray = icons.concat(icons);
- shuffle(iconArray);
- const row1 = document.querySelector('.card-row:first-child');
- const row2 = document.querySelector('.card-row:nth-child(2)');
- let i = 0;
- for (const icon of iconArray) {
-     i++;
-     const card = getOneCard(icon);
-     if (i < 6) {
-         row1.appendChild(card);
-     } else {
-         row2.appendChild(card);
-     }
- }
+//  const iconArray = icons.concat(icons);
+//  shuffle(iconArray);
+//  const row1 = document.querySelector('.card-row:first-child');
+//  const row2 = document.querySelector('.card-row:nth-child(2)');
+//  let i = 0;
+//  for (const icon of iconArray) {
+//      i++;
+//      const card = getOneCard(icon);
+//      if (i < 6) {
+//          row1.appendChild(card);
+//      } else {
+//          row2.appendChild(card);
+//      }
+//  }
